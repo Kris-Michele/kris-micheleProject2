@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Lora&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/4658e88ac2.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -58,13 +58,30 @@
                 </div>
             </div>
         </section>
-        <section class="product">
-            <div class="wrapper">
+        <section class="product wrapper">
                 <div class="productText">
                     <h2>Our Products</h2>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</br> Dolor nihil odio praesentium minima iusto? A?</p>
                 </div>
+
+<!-- ==================================================================== -->
+                <!-- div container to hold all the tags. -->
+                <div class="filterContainer">
+                    <ul class="tagsToPick">
+                        <!-- Tags to pick from -->
+                        <li class="tag">Sale</li>
+                        <li class="tag">Organic</li>
+                        <li class="tag">In Stock</li>
+                        <li class="tag clearAll">Clear</li>
+                    </ul>
+                </div>
+<!-- ==================================================================== -->
+
+
+
                 <div class="galleryFlex">
+
+ <!--==============================================================-->                   
                     <article class="productArticle">
                         <div class="vegetableImage">
                             <img src="./assets/product1.jpeg" alt="tomatoes sitting on lettuce with cucumbers in front">
@@ -76,6 +93,8 @@
                             <button class="productButton">Add To Cart</button>
                         </div>
                     </article>
+
+<!--====================================================================-->                    
                     <article class="productArticle">
                         <div class="vegetableImage">
                             <img src="./assets/product2.jpeg" alt="a lime cut in half">
@@ -157,7 +176,7 @@
                 <div class="loadButtonFlex">
                     <button class="loadButton">Load More</button>
                 </div>
-            </div>
+
         </section>
         <section class="gallery">
             <div class="wrapper">
@@ -273,5 +292,6 @@
     <footer>
         <p>Copyright &copy 2023. All Rights Reserved</p>
     </footer>
+    <script type="module" src="./scripts/scripts.js"></script>
 </body>
 </html>
