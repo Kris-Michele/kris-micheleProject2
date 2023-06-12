@@ -110,6 +110,30 @@
     border-radius: 20px;
 }
 
+.filterContainer {
+    padding-top: 2rem;
+}
+
+.tagsToPick {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tag {
+    text-transform: uppercase;
+    font-family: 'Lora', serif;
+    font-size: .8rem;
+    background-color: $green;
+    color: $white;
+    font-weight: 900;
+    padding-top:.5rem;
+    padding-bottom: .5rem;
+    padding-left: .75rem;
+    padding-right:.75rem;
+    border-radius: 20px;
+    display: inline;
+}
+
 @media (max-width: 1150px) {
     .productArticle {
         width: 30%;
