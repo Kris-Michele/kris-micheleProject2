@@ -50,6 +50,12 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.productContainerSection{
+    display: flex;
+    align-items: start;
+    position: relative;
+}
+
 
 .gallery1, .gallery2, .gallery3, .gallery6, .gallery7, .gallery8 {
     width: 31%;

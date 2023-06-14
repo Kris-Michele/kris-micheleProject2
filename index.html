@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Lora&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/4658e88ac2.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -59,105 +61,32 @@
             </div>
         </section>
         <section class="product">
-            <div class="wrapper">
                 <div class="productText">
                     <h2>Our Products</h2>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</br> Dolor nihil odio praesentium minima iusto? A?</p>
                 </div>
-                <div class="galleryFlex">
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product1.jpeg" alt="tomatoes sitting on lettuce with cucumbers in front">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product2.jpeg" alt="a lime cut in half">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product3.jpeg" alt="3 green eggplants">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product4.jpeg" alt="3 light green zucchinis">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product5.jpeg" alt="open pea pods showing a line of peas">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product8.jpeg" alt="a top down angle of romaine lettuce">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product6.jpeg" alt="4 olives on a vine">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
-                    <article class="productArticle">
-                        <div class="vegetableImage">
-                            <img src="./assets/product7.jpeg" alt="a head of cabbage">
-                        </div>
-                        <div class="vegetableText">
-                            <h3>Mix Vegetables</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span class="formerPrice">$350</span></p>
-                            <button class="productButton">Add To Cart</button>
-                        </div>
-                    </article>
+                <div class="productContainerSection wrapper"> 
+                    <div class="galleryFlex">
+                         <!-- Imports database -->
+                    </div>                
+                   <div class="filterBox">
+                    <ul>
+                        <li class="tag">
+                            Sale 
+                        </li>
+                        <li class="tag">
+                            Organic
+                        </li>
+                        <li class="tag">
+                            In Stock
+                        </li>
+                     </ul>
+                    <button class="clearButton" id="clearButton">Clear</button></div>
+                   </div>
                 </div>
                 <div class="loadButtonFlex">
                     <button class="loadButton">Load More</button>
                 </div>
-            </div>
         </section>
         <section class="gallery">
             <div class="wrapper">
@@ -273,5 +202,6 @@
     <footer>
         <p>Copyright &copy 2023. All Rights Reserved</p>
     </footer>
+    <script type="module" src="./scripts/scripts.js"></script>
 </body>
 </html>

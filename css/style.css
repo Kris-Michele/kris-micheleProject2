@@ -462,6 +462,12 @@ h1 {
   justify-content: space-evenly;
 }
 
+.productContainerSection {
+  display: flex;
+  align-items: start;
+  position: relative;
+}
+
 .gallery1, .gallery2, .gallery3, .gallery6, .gallery7, .gallery8 {
   width: 31%;
 }
@@ -877,4 +883,50 @@ textarea {
   .message textarea {
     max-width: 50%;
   }
+}
+.filterBox {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5%;
+  left: 105%;
+  background-color: #f0f0f0;
+  border: #d3d3d3 solid 2px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 10rem;
+  border-radius: 15px;
+  filter: drop-shadow(-10px 14px 14px #d3d3d3);
+}
+
+.filterBox ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.filterBox ul li, .clearButton {
+  color: #fff;
+  background-color: #207200;
+  margin: 1rem;
+  line-height: 1.25;
+  border-radius: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.filterBox ul li:hover, .clearButton:hover {
+  background-color: #36ba02;
+}
+
+.clearButton {
+  align-self: flex-end;
+}
+
+.filterBox ul li {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 60%;
 }/*# sourceMappingURL=style.css.map */
