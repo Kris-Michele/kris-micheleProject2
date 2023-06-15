@@ -1,5 +1,7 @@
 @use './variables' as *;
 .filterBox{
+    min-height: 20vh;
+    background-color: black;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -12,13 +14,34 @@
     border-radius: 15px;
     filter: drop-shadow(-10px 14px 14px #d3d3d3);
 }
+
+.filterBox2 {
+    width: 35%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border: hsl(0, 0%, 83%, .5) solid 2px;
+    background-color: #f0f0f0;
+    box-shadow: hsl(0, 0%, 94%, .5) -10px 10px;
+}
+
+.filterBox2 ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.filterBox2 li {
+    display: inline;
+}
+
 .filterBox ul{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-.filterBox ul li, .clearButton{
+.filterBox2 ul li, .clearButton{
     color: $white;
     background-color: $green;
     margin: 1rem;
@@ -29,7 +52,7 @@
     text-align: center;
 }
 
-.filterBox ul li:hover, .clearButton:hover{
+.filterBox2 ul li:hover, .clearButton:hover{
     background-color:#36ba02;
 }
 .clearButton{
@@ -40,4 +63,28 @@ align-self: flex-end;
     justify-content: center;
     gap: .25rem;
     width: 60%;
+}
+
+@media (max-width: 1325px) {
+    .filterBox2 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 920px) {
+    .filterBox2 {
+        width: 70%;
+    }
+}
+
+@media(max-width: 675px) {
+    .filterBox2 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 515px){
+    .filterBox2 ul {
+        flex-wrap: wrap;
+    }
 }
