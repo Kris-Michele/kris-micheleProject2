@@ -11,6 +11,13 @@
     background-color: $white;
     box-shadow: 0px 10px 2px lightgray;
 }
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #1ac400;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
 .logo {
     padding-top: .5rem;

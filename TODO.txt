@@ -1,0 +1,1 @@
+Fix visual bugs -> Mobilie screen sizes from 890px down
