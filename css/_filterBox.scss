@@ -41,7 +41,7 @@
 //     justify-content: flex-start;
 // }
 
-.filterBox ul li, .clearButton{
+.tag, .clearButton{
     color: $white;
     background-color: $green;
     margin: 1rem;
@@ -52,18 +52,12 @@
     text-align: center;
 }
 
-.filterBox ul li:hover, .clearButton:hover{
-    background-color:#36ba02;
+.tag:hover, .clearButton:hover{
+    background-color: $lightGreen;
 }
-// .clearButton{
-// align-self: flex-end;
-// }
-// .filterBox ul li{
-//     display: flex;
-//     justify-content: center;
-//     gap: .25rem;
-//     width: 60%;
-// }
+.tagActive{
+    background-color:$lightGreen;
+}
 
 @media (max-width: 1325px) {
     .filterBox {

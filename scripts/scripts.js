@@ -13,12 +13,19 @@ const clearButton = document.getElementById('clearButton');
 // Adding event listeners to the tags on page load
 filterBox.addEventListener('click', (e) => {
     const tag = e.target;
-    if(tag.nodeName === 'LI') {
+    if(tag.nodeName === 'LI' && tag.classList.contains('tag')){
         if(filteredTags.includes(tag.innerText)){
-            //reject
+
+            // removes if being filtered for already
+            let tagCehcked = filteredTags.indexOf(tag.innerText);
+            delete filteredTags[tagCehcked];
+            filterProductRendering(filteredTags);
+            tag.classList.toggle("tagActive");
+
         } else {
              filteredTags.push(tag.innerText);
              filterProductRendering(filteredTags);
+             tag.classList.toggle("tagActive");
         };
     };
 });
@@ -27,7 +34,14 @@ filterBox.addEventListener('click', (e) => {
 clearButton.addEventListener('click', () => {
     filteredTags.length = 0;
     filterProductRendering(filteredTags);
-})
+    const allTags = document.querySelectorAll(".tag");
+    console.log(allTags);
+    allTags.forEach((tag)=>{
+        if(tag.classList.contains("tagActive")){
+            tag.classList.toggle("tagActive");
+        };
+    });
+});
 
 onValue(dbref,(data)=>{
     const allProducts = [];

@@ -56,6 +56,14 @@ footer p {
   box-shadow: 0px 10px 2px lightgray;
 }
 
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #1ac400;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .logo {
   padding-top: 0.5rem;
 }
@@ -908,7 +916,7 @@ textarea {
   display: inline;
 }
 
-.filterBox ul li, .clearButton {
+.tag, .clearButton {
   color: #fff;
   background-color: #207200;
   margin: 1rem;
@@ -919,7 +927,11 @@ textarea {
   text-align: center;
 }
 
-.filterBox ul li:hover, .clearButton:hover {
+.tag:hover, .clearButton:hover {
+  background-color: #36ba02;
+}
+
+.tagActive {
   background-color: #36ba02;
 }
 
