@@ -31,16 +31,9 @@
     align-items: center;
 }
 
-.filterBox li {
+.tag {
     display: inline;
 }
-
-// .filterBox ul{
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-// }
-
 .tag, .clearButton{
     color: $white;
     background-color: $green;
@@ -57,6 +50,14 @@
 }
 .tagActive{
     background-color:$lightGreen;
+}
+// google reset icon styling DO NO ALTER
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }
 
 @media (max-width: 1325px) {

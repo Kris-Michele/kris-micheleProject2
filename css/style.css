@@ -912,7 +912,7 @@ textarea {
   align-items: center;
 }
 
-.filterBox li {
+.tag {
   display: inline;
 }
 
@@ -933,6 +933,10 @@ textarea {
 
 .tagActive {
   background-color: #36ba02;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
 @media (max-width: 1325px) {
