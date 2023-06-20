@@ -108,7 +108,6 @@ const displayProducts = (productsArr,node) =>{
     });
 };
 
-
 const filterProductRendering = (filtersArr) =>{
     onValue(dbref,(data)=>{
         const allProducts = [];
