@@ -42,19 +42,15 @@ clearButton.addEventListener('click', () => {
     });
 });
 
- const intialRender = () => 
+ const intialRender = () =>
     onValue(dbref,(data)=>{
-        console.log('Load page called')
         const allProducts = [];
         console.log(allProducts);
         if(data.exists()){
-            console.log('onvalue if statement checked')
-            const payload = data.val().products
+            const payload = data.val().products;
             for(let product in payload){
-                console.log('onvalue forloop working')
-                console.log(product);
                 allProducts.push(payload[product]);
-            }
+            };
         };
     console.log(allProducts);
     displayProducts(allProducts,productContainer);
