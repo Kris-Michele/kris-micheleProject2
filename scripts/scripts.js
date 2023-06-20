@@ -16,8 +16,8 @@ filterBox.addEventListener('click', (e) => {
         if(filteredTags.includes(tag.innerText)){
 
             // removes if being filtered for already
-            let tagCehcked = filteredTags.indexOf(tag.innerText);
-            delete filteredTags[tagCehcked];
+            let tagChecked = filteredTags.indexOf(tag.innerText);
+            delete filteredTags[tagChecked];
             filterProductRendering(filteredTags);
             tag.classList.toggle("tagActive");
 
@@ -42,14 +42,21 @@ clearButton.addEventListener('click', () => {
     });
 });
 
-onValue(dbref,(data)=>{
-    const allProducts = [];
-    if(data.exists()){
-        const payload = data.val().products
-        for(let product in payload){
-            allProducts.push(payload[product]);
-        }
-    };
+ const intialRender = () => 
+    onValue(dbref,(data)=>{
+        console.log('Load page called')
+        const allProducts = [];
+        console.log(allProducts);
+        if(data.exists()){
+            console.log('onvalue if statement checked')
+            const payload = data.val().products
+            for(let product in payload){
+                console.log('onvalue forloop working')
+                console.log(product);
+                allProducts.push(payload[product]);
+            }
+        };
+    console.log(allProducts);
     displayProducts(allProducts,productContainer);
     addToCartEvents();
 });
@@ -139,6 +146,6 @@ const addToCartEvents = () =>{
     });
 };
 
-
+export {intialRender};
 
 
