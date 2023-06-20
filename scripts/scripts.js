@@ -7,7 +7,6 @@ const dbref = ref(database);
 const productContainer = document.querySelector(`.galleryFlex`);
 const filterBox = document.querySelector(`.filterBox`);
 const filteredTags = [];
-window.filteredTags = filteredTags;
 const clearButton = document.getElementById('clearButton');
 
 // Adding event listeners to the tags on page load
@@ -52,6 +51,7 @@ onValue(dbref,(data)=>{
         }
     };
     displayProducts(allProducts,productContainer);
+    addToCartEvents();
 });
 const displayProducts = (productsArr,node) =>{ 
     node.innerHTML = "";
@@ -121,6 +121,22 @@ const filterProductRendering = (filtersArr) =>{
             displayProducts(filteredProducts,productContainer)
         };
   });
+};
+
+const addToCartEvents = () =>{
+    const buttonsHtmlCollection = document.querySelectorAll('.productButton');
+    const cartButtonsArray = Array.from(buttonsHtmlCollection);
+    cartButtonsArray.forEach((button)=>{
+        button.addEventListener(`click`, (e)=>{
+            console.log(e.target);
+            // goes into parent element
+            // grabs h3  / product name information
+            // searches database for corresponding product
+            // pushes prduct name, price  and image to the cart and adds a counter of 1. 
+                // if the item gets added again +1 to the counter
+                // todo : add another +/- button in the cart that if clicked => updates qty.
+        });
+    });
 };
 
 
