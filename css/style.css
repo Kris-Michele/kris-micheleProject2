@@ -54,6 +54,17 @@ footer p {
   height: 10vh;
   background-color: #fff;
   box-shadow: 0px 10px 2px lightgray;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #1ac400;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .logo {
@@ -889,12 +900,16 @@ textarea {
   }
 }
 .filterBox {
-  width: 35%;
+  width: 45%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border: hsla(0, 0%, 83%, 0.5) solid 2px;
   background-color: #f0f0f0;
   box-shadow: hsla(0, 0%, 94%, 0.5) -10px 10px;
+}
+
+.noWrap {
+  white-space: nowrap;
 }
 
 .filterBox ul {
@@ -923,6 +938,11 @@ textarea {
   background-color: #36ba02;
 }
 
+@media (max-width: 1440px) {
+  .filterBox ul {
+    flex-wrap: wrap;
+  }
+}
 @media (max-width: 1325px) {
   .filterBox {
     width: 50%;
@@ -936,10 +956,5 @@ textarea {
 @media (max-width: 675px) {
   .filterBox {
     width: 90%;
-  }
-}
-@media (max-width: 515px) {
-  .filterBox ul {
-    flex-wrap: wrap;
   }
 }/*# sourceMappingURL=style.css.map */
