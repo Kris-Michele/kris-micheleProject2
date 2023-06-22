@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Lora&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/4658e88ac2.js" crossorigin="anonymous"></script>
 </head>
@@ -24,7 +23,7 @@
                         <li><a href="#Home">Home</a></li>
                         <li><a href="#Blog">Blog</a></li>
                         <li><a href="./contact.html#contact">Contact</a></li>
-                        <li><img src="./assets/icons/cart.svg" alt= "A shopping cart"class="navIcon" ><div class="dot"></div></li>
+                        <li><img src="./assets/icons/cart.svg" alt= "A shopping cart"class="navIcon" ><p id ="cartNumber"></p></li>
                     </ul>
                 </nav>
             </div>
@@ -74,38 +73,23 @@
                             Organic
                         </li>
                         <li class="tag">
-                            <span class="noWrap">In Stock</span>
+                            In Stock
                         </li>
                         <li class="tag">
                             Local
                         </li>
-                        <li class="tag">
-                            Test
-                        </li>
-                        <button class="clearButton" id="clearButton">
-                            Clear
-                        </button>
                     </ul>
+                    <button class="clearButton" id="clearButton">
+                        <span class="material-symbols-outlined">
+                            restart_alt
+                        </span>
+                    </button>
                 </div>
             </div>
                 <div class="productContainerSection wrapper"> 
                     <div class="galleryFlex">
                          <!-- Imports database -->
                     </div>                
-                    <!-- <div class="filterBox">
-                    <ul>
-                        <li class="tag">
-                            Sale 
-                        </li>
-                        <li class="tag">
-                            Organic
-                        </li>
-                        <li class="tag">
-                            In Stock
-                        </li>
-                     </ul>
-                    <button class="clearButton" id="clearButton">Clear</button></div>
-                   </div> -->
                 </div>
                 <div class="loadButtonFlex">
                     <button class="loadButton">Load More</button>
@@ -225,6 +209,6 @@
     <footer>
         <p>Copyright &copy 2023. All Rights Reserved</p>
     </footer>
-    <script type="module" src="./scripts/scripts.js"></script>
-</body>
+    <script type="module" src="./scripts/app.js"></script>
+</body> 
 </html>

@@ -7,18 +7,27 @@ const dbref = ref(database);
 const productContainer = document.querySelector(`.galleryFlex`);
 const filterBox = document.querySelector(`.filterBox`);
 const filteredTags = [];
-window.filteredTags = filteredTags;
 const clearButton = document.getElementById('clearButton');
+
+const cartContainer = document.getElementById('cartNumber');
+
 
 // Adding event listeners to the tags on page load
 filterBox.addEventListener('click', (e) => {
     const tag = e.target;
-    if(tag.nodeName === 'LI') {
+    if(tag.nodeName === 'LI' && tag.classList.contains('tag')){
         if(filteredTags.includes(tag.innerText)){
-            //reject
+
+            // removes if being filtered for already
+            let tagChecked = filteredTags.indexOf(tag.innerText);
+            delete filteredTags[tagChecked];
+            filterProductRendering(filteredTags);
+            tag.classList.toggle("tagActive");
+
         } else {
              filteredTags.push(tag.innerText);
              filterProductRendering(filteredTags);
+             tag.classList.toggle("tagActive");
         };
     };
 });
@@ -27,17 +36,29 @@ filterBox.addEventListener('click', (e) => {
 clearButton.addEventListener('click', () => {
     filteredTags.length = 0;
     filterProductRendering(filteredTags);
-})
+    const allTags = document.querySelectorAll(".tag");
+    console.log(allTags);
+    allTags.forEach((tag)=>{
+        if(tag.classList.contains("tagActive")){
+            tag.classList.toggle("tagActive");
+        };
+    });
+});
 
-onValue(dbref,(data)=>{
-    const allProducts = [];
-    if(data.exists()){
-        const payload = data.val().products
-        for(let product in payload){
-            allProducts.push(payload[product]);
-        }
-    };
+ const intialRender = () =>
+    onValue(dbref,(data)=>{
+        const allProducts = [];
+        if(data.exists()){
+            const payload = data.val().products;
+            const cart = data.val().cart;
+            cartContainer.textContent = cart;
+            console.log(cart);
+            for(let product in payload){
+                allProducts.push(payload[product]);
+            };
+        };
     displayProducts(allProducts,productContainer);
+    addToCartEvents();
 });
 const displayProducts = (productsArr,node) =>{ 
     node.innerHTML = "";
@@ -87,7 +108,6 @@ const displayProducts = (productsArr,node) =>{
     });
 };
 
-
 const filterProductRendering = (filtersArr) =>{
     onValue(dbref,(data)=>{
         const allProducts = [];
@@ -108,6 +128,28 @@ const filterProductRendering = (filtersArr) =>{
         };
   });
 };
+
+
+
+    const addToCartEvents = () =>{
+            const cartButtonsArray = document.querySelectorAll('.productButton');
+            cartButtonsArray.forEach((button)=>{
+            button.addEventListener(`click`, (e)=>{
+                const updatedCart = parseInt(cartContainer.textContent)+1;
+                const newCart = {
+                    cart: updatedCart
+                }
+                update(dbref, newCart);
+                cartContainer.textContent = updatedCart;
+                });
+        });  
+    };
+
+
+
+export {intialRender};
+
+
 
 
 
