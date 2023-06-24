@@ -126,19 +126,15 @@ const filterProductRendering = (filtersArr) =>{
 };
 
 const addToCartEvents = () =>{
-    const buttonsHtmlCollection = document.querySelectorAll('.productButton');
-    const cartButtonsArray = Array.from(buttonsHtmlCollection);
+    const cartButtonsArray = document.querySelectorAll('.productButton');
     cartButtonsArray.forEach((button)=>{
         button.addEventListener(`click`, (e)=>{
-            console.log(e.target);
-            // goes into parent element
-            // grabs h3  / product name information
-            // searches database for corresponding product
-            // pushes prduct name, price  and image to the cart and adds a counter of 1. 
-                // if the item gets added again +1 to the counter
-                // todo : add another +/- button in the cart that if clicked => updates qty.
+        const updatedCart = parseInt(cartContainer.textContent)+1;
+        const newCart = {cart: updatedCart}
+        push(dbref,newCart);
+        cartContainer.textContent = updatedCart;
         });
-    });
+    }); 
 };
 
 export {intialRender};
