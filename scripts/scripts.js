@@ -3,11 +3,28 @@ import {getDatabase, ref, onValue, update, push, get} from 'https://www.gstatic.
 
 const database = getDatabase(app);
 const dbref = ref(database);
-
+      
 const productContainer = document.querySelector(`.galleryFlex`);
 const filterBox = document.querySelector(`.filterBox`);
 const filteredTags = [];
 const clearButton = document.getElementById('clearButton');
+const cartContainer = document.getElementById('cartNumber');
+
+
+// generating user key
+const userKeyGen = () => {
+    let localKey = localStorage.getItem("key");
+  
+    if (!localKey) {
+      const newUserKeyRef = push(dbref, { cart: 0 });
+      localKey = newUserKeyRef.key;
+      localStorage.setItem("key", localKey);
+    }
+  
+    return localKey;
+  };
+  const localKey = userKeyGen();
+
 
 // Adding event listeners to the tags on page load
 filterBox.addEventListener('click', (e) => {
@@ -34,7 +51,6 @@ clearButton.addEventListener('click', () => {
     filteredTags.length = 0;
     filterProductRendering(filteredTags);
     const allTags = document.querySelectorAll(".tag");
-    console.log(allTags);
     allTags.forEach((tag)=>{
         if(tag.classList.contains("tagActive")){
             tag.classList.toggle("tagActive");
@@ -42,10 +58,9 @@ clearButton.addEventListener('click', () => {
     });
 });
 
- const intialRender = () =>
+ const intialRender = () =>{
     onValue(dbref,(data)=>{
         const allProducts = [];
-        console.log(allProducts);
         if(data.exists()){
             const payload = data.val().products;
             for(let product in payload){
@@ -55,7 +70,8 @@ clearButton.addEventListener('click', () => {
     console.log(allProducts);
     displayProducts(allProducts,productContainer);
     addToCartEvents();
-});
+    });
+};
 const displayProducts = (productsArr,node) =>{ 
     node.innerHTML = "";
     productsArr.forEach((product)=>{
@@ -125,18 +141,19 @@ const filterProductRendering = (filtersArr) =>{
   });
 };
 
-const addToCartEvents = () =>{
+const addToCartEvents = () => {
     const cartButtonsArray = document.querySelectorAll('.productButton');
-    cartButtonsArray.forEach((button)=>{
-        button.addEventListener(`click`, (e)=>{
-        const updatedCart = parseInt(cartContainer.textContent)+1;
-        const newCart = {cart: updatedCart}
-        push(dbref,newCart);
-        cartContainer.textContent = updatedCart;
+    cartButtonsArray.forEach((button) => {
+        button.addEventListener('click', (e) => {
+          const cartItemCount = Number(cartContainer.textContent) + 1;
+          const userCartFirebasePath = localKey + '/cart';
+          const updatedCart = {};
+          updatedCart[userCartFirebasePath] = cartItemCount;
+          update(dbref, updatedCart);
+          cartContainer.textContent = cartItemCount;
         });
-    }); 
-};
+      });
+    };
+
 
 export {intialRender};
-
-
