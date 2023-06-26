@@ -1,5 +1,5 @@
 import {app} from './firebase.js';
-import {getDatabase, ref, onValue, update, push, get} from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js';
+import {getDatabase, ref, onValue, update, push, get, child} from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js';
 
 const database = getDatabase(app);
 const dbref = ref(database);
@@ -11,19 +11,6 @@ const clearButton = document.getElementById('clearButton');
 const cartContainer = document.getElementById('cartNumber');
 
 
-// generating user key
-const userKeyGen = () => {
-    let localKey = localStorage.getItem("key");
-  
-    if (!localKey) {
-      const newUserKeyRef = push(dbref, { cart: 0 });
-      localKey = newUserKeyRef.key;
-      localStorage.setItem("key", localKey);
-    }
-  
-    return localKey;
-  };
-  const localKey = userKeyGen();
 
 
 // Adding event listeners to the tags on page load
@@ -31,17 +18,17 @@ filterBox.addEventListener('click', (e) => {
     const tag = e.target;
     if(tag.nodeName === 'LI' && tag.classList.contains('tag')){
         if(filteredTags.includes(tag.innerText)){
-
+            
             // removes if being filtered for already
             let tagChecked = filteredTags.indexOf(tag.innerText);
             delete filteredTags[tagChecked];
             filterProductRendering(filteredTags);
             tag.classList.toggle("tagActive");
-
+            
         } else {
-             filteredTags.push(tag.innerText);
-             filterProductRendering(filteredTags);
-             tag.classList.toggle("tagActive");
+            filteredTags.push(tag.innerText);
+            filterProductRendering(filteredTags);
+            tag.classList.toggle("tagActive");
         };
     };
 });
@@ -58,7 +45,43 @@ clearButton.addEventListener('click', () => {
     });
 });
 
- const intialRender = () =>{
+// generating user key
+const userKeyGen = () => {
+    let localKey = localStorage.getItem("key");
+  
+    if (!localKey) {
+      const newUserKeyRef = push(dbref, { cart: 0 });
+      localKey = newUserKeyRef.key;
+      localStorage.setItem("key", localKey);
+    }
+  
+    return localKey;
+  };
+const localKey = userKeyGen();
+
+const cartMemoryRender =  (key) => {
+ get(child(dbref,key))
+    .then((snapshot)=>{
+        if(snapshot.exists){
+           let cartQty = snapshot.val();
+           // console.log(cartQty)
+           cartContainer.textContent = cartQty.cart;
+        }else{
+            console.log("failed");
+        }
+    });
+};
+// how above works
+// get() -> reads the database
+// child(dbref,key) looks at the database reference then looks for the child node passed into key param
+// get reads that child node
+//.then() -> after the get and child are done we take a snapshot of the database
+// if the snapshot returns something / exists we store the .val() of the node (the cart object);
+// after storing the val() of the cart object into a variable we set the cartcontainer.textContent to be equalt to cartQty.cart
+
+
+
+const intialRender = () =>{
     onValue(dbref,(data)=>{
         const allProducts = [];
         if(data.exists()){
@@ -67,8 +90,8 @@ clearButton.addEventListener('click', () => {
                 allProducts.push(payload[product]);
             };
         };
-    console.log(allProducts);
     displayProducts(allProducts,productContainer);
+    cartMemoryRender(localKey);
     addToCartEvents();
     });
 };
@@ -149,6 +172,7 @@ const addToCartEvents = () => {
           const userCartFirebasePath = localKey + '/cart';
           const updatedCart = {};
           updatedCart[userCartFirebasePath] = cartItemCount;
+          console.log(get(dbref,userCartFirebasePath));
           update(dbref, updatedCart);
           cartContainer.textContent = cartItemCount;
         });
