@@ -192,15 +192,15 @@ const addToCartEvents = () => {
     cartButtonsArray.forEach((button) => {
         button.addEventListener('click', (e) => {
             document.getElementById(`cartNumber`).style.display = "";  
-          const cartItemCount = Number(cartContainer.textContent) + 1;
-          const userCartFirebasePath = localKey + '/cart';
-          const updatedCart = {};
-          updatedCart[userCartFirebasePath] = cartItemCount;
-          update(dbref, updatedCart);
-          cartContainer.textContent = cartItemCount;
+            const cartItemCount = Number(cartContainer.textContent) + 1;
+            const userCartFirebasePath = localKey + '/cart';
+            const updatedCart = {};
+            updatedCart[userCartFirebasePath] = cartItemCount;
+            update(dbref, updatedCart);
+            cartContainer.textContent = cartItemCount;
         });
-      });
-    };
+    });
+};
 
 
 export {intialRender};
