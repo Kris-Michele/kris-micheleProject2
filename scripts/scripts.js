@@ -70,19 +70,15 @@ const cartMemoryRender =  (key) => {
     .then((snapshot)=>{
         if(snapshot.exists){
            let cartQty = snapshot.val();
-           // console.log(cartQty)
+           console.log(cartQty.cart)
+           if(cartQty.cart === 0 ){
+           document.getElementById(`cartNumber`).style.display = "none";
+           };
            cartContainer.textContent = cartQty.cart;
         }else{
             console.log("failed");
         }
     });
-    // how above works
-// get() -> reads the database
-// child(dbref,key) looks at the database reference then looks for the child node passed into key param
-// get reads that child node
-//.then() -> after the get and child are done we take a snapshot of the database
-// if the snapshot returns something / exists we store the .val() of the node (the cart object);
-// after storing the val() of the cart object into a variable we set the cartcontainer.textContent to be equalt to cartQty.cart
 };
 
 // Michele
@@ -156,7 +152,7 @@ const displayProducts = (productsArr,node) =>{
         productInfoContainer.classList.add(`vegetableText`);
         price.classList.add(`price`);
         span.classList.add(`formerPrice`);
-        addToCartBtn.classList.add(`productButton`);
+        addToCartBtn.classList.add(`addToCart`);
     });
 };
 
@@ -192,14 +188,14 @@ const filterProductRendering = (filtersArr) =>{
 // Function: addToCartEvents();
 // purpose: adds an event listener to all add to cart buttons and provides them with logic to interface the database and update the user's cart by referencing their local key.
 const addToCartEvents = () => {
-    const cartButtonsArray = document.querySelectorAll('.productButton');
+    const cartButtonsArray = document.querySelectorAll('.addToCart');
     cartButtonsArray.forEach((button) => {
         button.addEventListener('click', (e) => {
+            document.getElementById(`cartNumber`).style.display = "";  
           const cartItemCount = Number(cartContainer.textContent) + 1;
           const userCartFirebasePath = localKey + '/cart';
           const updatedCart = {};
           updatedCart[userCartFirebasePath] = cartItemCount;
-          console.log(get(dbref,userCartFirebasePath));
           update(dbref, updatedCart);
           cartContainer.textContent = cartItemCount;
         });

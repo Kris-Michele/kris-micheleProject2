@@ -79,20 +79,32 @@
     margin-top: 2.5rem;
 }
 
-.productButton {
+.addCartButton {
     background-color: $green;
     font-family: 'Lora', serif;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: $white;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     border-radius: 15px;
     position: relative;
     top: 20px;
     left: 20px;
-}
+    transition: background-color 0.3s ease; // Added transition for smooth effect
+  
+    &:hover {
+      background-color: $lightGreen;
+    }
+  
+    &.active {
+      transform: scale(1, 0.5);
+    }
+  }
+  .fakeclasstest{
+    margin: 0 auto;
+  }
 
 .loadButtonFlex {
     margin-top: 3rem;

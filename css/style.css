@@ -92,6 +92,21 @@ nav {
   font-weight: 600;
   text-transform: uppercase;
 }
+.cartLi{
+  position: relative;
+}
+#cartNumber{
+  padding: 3%;
+  position: absolute;
+  top: 1%;
+  left: 40%;
+  background-color: green;
+  border-radius: 50%;
+  height: 48%;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
 
 a:link {
   color: #1a2428;
@@ -372,10 +387,9 @@ h1 {
   width: 22%;
   margin-top: 2.5rem;
 }
-
-.productButton {
+.addToCart {
   background-color: #207200;
-  font-family: "Lora", serif;
+  font-family: 'Lora', serif;
   font-size: 0.9rem;
   color: #fff;
   padding-top: 0.25rem;
@@ -386,6 +400,14 @@ h1 {
   position: relative;
   top: 20px;
   left: 20px;
+  transition: background-color 0.3s ease;
+  transition: transform 0.1s ease-in-out;
+}
+.addToCart:hover{
+  background-color: #36ba02;
+}
+.addToCart:active{
+  transform: scale(1, 0.75);
 }
 
 .loadButtonFlex {

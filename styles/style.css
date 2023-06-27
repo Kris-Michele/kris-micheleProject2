@@ -56,6 +56,14 @@ footer p {
   box-shadow: 0px 10px 2px lightgray;
 }
 
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #1ac400;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .logo {
   padding-top: 0.5rem;
 }
@@ -365,7 +373,7 @@ h1 {
   margin-top: 2.5rem;
 }
 
-.productButton {
+.addCartButton {
   background-color: #207200;
   font-family: "Lora", serif;
   font-size: 0.9rem;
@@ -378,6 +386,17 @@ h1 {
   position: relative;
   top: 20px;
   left: 20px;
+  transition: background-color 0.3s ease;
+}
+.addCartButton:hover {
+  background-color: #36ba02;
+}
+.addCartButton.active {
+  transform: scale(1, 0.5);
+}
+
+.fakeclasstest {
+  margin: 0 auto;
 }
 
 .loadButtonFlex {
@@ -889,20 +908,12 @@ textarea {
   }
 }
 .filterBox {
-  min-height: 20vh;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 5%;
-  left: 105%;
+  width: 35%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border: hsla(0, 0%, 83%, 0.5) solid 2px;
   background-color: #f0f0f0;
-  border: #d3d3d3 solid 2px;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 10rem;
-  border-radius: 15px;
-  filter: drop-shadow(-10px 14px 14px #d3d3d3);
+  box-shadow: hsla(0, 0%, 94%, 0.5) -10px 10px;
 }
 
 .filterBox ul {
@@ -912,11 +923,11 @@ textarea {
   align-items: center;
 }
 
-.filterBox li {
+.tag {
   display: inline;
 }
 
-.filterBox ul li, .clearButton {
+.tag, .clearButton {
   color: #fff;
   background-color: #207200;
   margin: 1rem;
@@ -927,8 +938,16 @@ textarea {
   text-align: center;
 }
 
-.filterBox ul li:hover, .clearButton:hover {
+.tag:hover, .clearButton:hover {
   background-color: #36ba02;
+}
+
+.tagActive {
+  background-color: #36ba02;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
 @media (max-width: 1325px) {
@@ -950,4 +969,4 @@ textarea {
   .filterBox ul {
     flex-wrap: wrap;
   }
-}
+}/*# sourceMappingURL=style.css.map */
