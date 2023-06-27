@@ -8,7 +8,8 @@ const productContainer = document.querySelector(`.galleryFlex`);
 const filterBox = document.querySelector(`.filterBox`);
 const filteredTags = [];
 const clearButton = document.getElementById('clearButton');
-const cartContainer = document.getElementById('cartNumber');
+const cartContainer = document.querySelector('.cartNumberContainer');
+const cartNumberValue = document.getElementById('cartNumber');
 
 
 
@@ -72,13 +73,10 @@ const cartMemoryRender =  (key) => {
     .then((snapshot)=>{
         if(snapshot.exists){
            let cartQty = snapshot.val();
-           console.log(cartQty.cart)
            if(cartQty.cart === 0 ){
-           document.getElementById(`cartNumber`).style.display = "none";
+           document.querySelector(`.cartNumberContainer`).style.display = "none";
            };
-           cartContainer.textContent = cartQty.cart;
-        }else{
-            console.log("failed");
+           cartNumberValue.textContent = cartQty.cart;
         }
     });
         // how above works
@@ -188,7 +186,7 @@ const filterProductRendering = (filtersArr) =>{
             return  filtersArr.every((tag)=> productTags.includes(tag));
         });
         if(filteredProducts.length === 0){
-            console.log(`no matches`);
+           //reject
         }else{
             displayProducts(filteredProducts,productContainer)
         };
@@ -203,13 +201,13 @@ const addToCartEvents = () => {
     const cartButtonsArray = document.querySelectorAll('.addToCart');
     cartButtonsArray.forEach((button) => {
         button.addEventListener('click', (e) => {
-            document.getElementById(`cartNumber`).style.display = "";  
-            const cartItemCount = Number(cartContainer.textContent) + 1;
+            document.querySelector('.cartNumberContainer').style.display = "";
+            const cartItemCount = Number(cartNumberValue.textContent) + 1;
             const userCartFirebasePath = localKey + '/cart';
             const updatedCart = {};
             updatedCart[userCartFirebasePath] = cartItemCount;
             update(dbref, updatedCart);
-            cartContainer.textContent = cartItemCount;
+            cartNumberValue.textContent = cartItemCount;
         });
     });
 };

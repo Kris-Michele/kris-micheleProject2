@@ -150,6 +150,27 @@ h1 {
   border-radius: 15px;
 }
 
+.cartNumberContainer {
+  padding: 3%;
+  position: absolute;
+  top: 1%;
+  left: 40%;
+  background-color: green;
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cartNumber {
+  padding: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
 @media (max-width: 800px) {
   .hieroFlex {
     flex-direction: column;
@@ -274,11 +295,6 @@ h1 {
 @media (max-width: 780px) {
   .aboutService {
     display: none;
-  }
-}
-@media (max-width: 600px) {
-  .aboutFlex {
-    padding-top: 2rem;
   }
 }
 @media (max-width: 560px) {

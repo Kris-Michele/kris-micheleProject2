@@ -52,8 +52,12 @@ footer p {
 
 .navigation {
   height: 10vh;
-  background-color: #fff;
+  background-color: white;
   box-shadow: 0px 10px 2px lightgray;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .dot {
@@ -95,15 +99,22 @@ nav {
 .cartLi{
   position: relative;
 }
-#cartNumber{
+.cartNumberContainer{
   padding: 3%;
   position: absolute;
   top: 1%;
   left: 40%;
   background-color: green;
   border-radius: 50%;
-  height: 48%;
-  font-size: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#cartNumber{
+  padding: 0;
+  font-size: 1rem;
   font-weight: bold;
   color: white;
 }
@@ -202,6 +213,13 @@ h1 {
   .navList {
     flex-wrap: wrap;
   }
+  .navList li{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navList li .cartNumberContainer{
+    top:10%;
+  }
 }
 .about {
   height: 80vh;
@@ -292,8 +310,11 @@ h1 {
   }
 }
 @media (max-width: 600px) {
-  .aboutFlex {
+  /* .aboutFlex {
     padding-top: 2rem;
+  } */
+  .aboutText{
+    width: 70%;
   }
 }
 @media (max-width: 560px) {
@@ -341,6 +362,7 @@ h1 {
   text-align: center;
   line-height: 1.8rem;
   font-weight: 500;
+  padding: 5%;
 }
 
 .vegetableImage img {
@@ -404,7 +426,7 @@ h1 {
   transition: transform 0.1s ease-in-out;
   cursor: pointer;
 }
-.addToCart:hover{
+.addToCart:hover , .addToCart:focus{
   background-color: #36ba02;
 }
 .addToCart:active{
@@ -576,9 +598,8 @@ h1 {
   font-family: "Lora", serif;
   text-align: center;
   font-weight: 500;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
   line-height: 2rem;
+  padding: 2.5rem 0;
 }
 
 .blogFlex {
