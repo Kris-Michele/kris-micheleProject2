@@ -33,6 +33,7 @@ filterBox.addEventListener('click', (e) => {
     };
 });
 
+
 //Adding the event listener to the clear button on page load
 clearButton.addEventListener('click', () => {
     filteredTags.length = 0;
@@ -44,6 +45,7 @@ clearButton.addEventListener('click', () => {
         };
     });
 });
+
 
 //  Michele
 // Function : userKeyGen();
@@ -79,6 +81,13 @@ const cartMemoryRender =  (key) => {
             console.log("failed");
         }
     });
+        // how above works
+        // get() -> reads the database
+        // child(dbref,key) looks at the database reference then looks for the child node passed into key param
+        // get reads that child node
+        //.then() -> after the get and child are done we take a snapshot of the database
+        // if the snapshot returns something / exists we store the .val() of the node (the cart object);
+        // after storing the val() of the cart object into a variable we set the cartcontainer.textContent to be equalt to cartQty.cart
 };
 
 // Michele
@@ -103,6 +112,8 @@ const intialRender = () =>{
     addToCartEvents();
     });
 };
+
+
 // Michele
 // Function : dispalyProducts();
 // (param) productsArr - an array of objects containing product information.
@@ -155,6 +166,7 @@ const displayProducts = (productsArr,node) =>{
         addToCartBtn.classList.add(`addToCart`);
     });
 };
+
 
 // Michele
 // Function : filterProductRendering();
